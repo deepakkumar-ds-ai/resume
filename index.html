@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science Portfolio - Deepak Kumar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i> Data Science
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Hello, I'm Deepak Kumar</h1>
+            <p class="hero-subtitle">Data Scientist | Transforming data into actionable insights</p>
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+        </div>
+        <div class="hero-background"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm Deepak Kumar, a passionate data scientist with expertise in machine learning, data analysis, and statistical modeling. I love solving complex problems using data-driven approaches and creating visualizations that tell compelling stories.</p>
+                    <p>With experience in Python, SQL, and modern ML frameworks, I've helped organizations unlock valuable insights from their data and make informed business decisions. I'm continuously growing as a data scientist and excited to share my journey and projects here.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <h3>50+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>3+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>95%</h3>
+                        <p>Client Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-python"></i> Programming</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">R</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-brain"></i> Machine Learning</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">XGBoost</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-bar"></i> Data Visualization</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Seaborn</span>
+                        <span class="skill-tag">Plotly</span>
+                        <span class="skill-tag">Tableau</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Big Data & Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">Spark</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Google Cloud</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card" data-project="churn">
+                    <div class="project-header">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Customer Churn Prediction</h3>
+                    <p>Built a machine learning model to predict customer churn with 87% accuracy using gradient boosting techniques. Helped reduce churn by 15%.</p>
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>XGBoost</span>
+                        <span>Pandas</span>
+                    </div>
+                    <a href="#" class="project-link view-dashboard">View Project <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="project-card" data-project="sales">
+                    <div class="project-header">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Sales Analytics Dashboard</h3>
+                    <p>Developed an interactive dashboard that visualizes sales trends and KPIs in real-time. Reduced reporting time by 60%.</p>
+                    <div class="project-tags">
+                        <span>Tableau</span>
+                        <span>SQL</span>
+                        <span>Excel</span>
+                    </div>
+                    <a href="#" class="project-link view-dashboard">View Project <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="project-card" data-project="nlp">
+                    <div class="project-header">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>NLP Text Classification</h3>
+                    <p>Implemented a deep learning model for sentiment analysis on social media data. Achieved 92% accuracy on classification tasks.</p>
+                    <div class="project-tags">
+                        <span>TensorFlow</span>
+                        <span>NLTK</span>
+                        <span>Python</span>
+                    </div>
+                    <a href="#" class="project-link view-dashboard">View Project <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="project-card" data-project="timeseries">
+                    <div class="project-header">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Time Series Forecasting</h3>
+                    <p>Developed ARIMA and Prophet models for demand forecasting. Improved inventory management accuracy by 23%.</p>
+                    <div class="project-tags">
+                        <span>Prophet</span>
+                        <span>Statsmodels</span>
+                        <span>Python</span>
+                    </div>
+                    <a href="#" class="project-link view-dashboard">View Project <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="project-card" data-project="recommendation">
+                    <div class="project-header">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Recommendation Engine</h3>
+                    <p>Built a collaborative filtering recommendation system increasing user engagement by 35% and cross-selling revenue by 28%.</p>
+                    <div class="project-tags">
+                        <span>Scikit-learn</span>
+                        <span>Python</span>
+                        <span>Spark</span>
+                    </div>
+                    <a href="#" class="project-link view-dashboard">View Project <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="project-card" data-project="anomaly">
+                    <div class="project-header">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Anomaly Detection System</h3>
+                    <p>Created unsupervised learning solution to detect network anomalies. Reduced false positives by 40% compared to legacy system.</p>
+                    <div class="project-tags">
+                        <span>Isolation Forest</span>
+                        <span>Python</span>
+                        <span>AWS</span>
+                    </div>
+                    <a href="#" class="project-link view-dashboard">View Project <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Senior Data Scientist</h3>
+                        <p class="company">Tech Company Inc. | 2023 - Present</p>
+                        <p>Led machine learning initiatives that generated $2M in value. Mentored junior data scientists and established best practices for model deployment.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Data Scientist</h3>
+                        <p class="company">Analytics Solutions Ltd. | 2021 - 2023</p>
+                        <p>Developed predictive models for customer analytics. Improved model accuracy by 18% and reduced inference time by 35%.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Junior Data Analyst</h3>
+                        <p class="company">StartUp Data Co. | 2020 - 2021</p>
+                        <p>Performed exploratory data analysis and created visualizations for stakeholders. Built automated reporting pipelines saving 20 hours/month.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="contact-subtitle">I'm always interested in hearing about new projects and opportunities.</p>
+            <div class="contact-content">
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>alex@example.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Your City, Country</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Modal -->
+    <div id="dashboardModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalTitle">Project Dashboard</h2>
+            </div>
+            <div class="modal-body" id="dashboardContainer">
+                <!-- Dashboard will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+                <p>&copy; 2026 Deepak Kumar - Data Science Portfolio. All rights reserved.</p>
+    <script src="script.js"></script>
+</body>
+</html>
