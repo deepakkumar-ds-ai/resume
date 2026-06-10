@@ -53,9 +53,14 @@ if (contactForm) {
             return;
         }
 
-        // Here you would typically send this to a backend service
-        // For now, we'll just show a success message
-        showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
+        // Build mailto link to send the form message to the portfolio owner
+        const ownerEmail = 'deepakkumar.datascientist@gmail.com';
+        const subject = `Message from ${name}`;
+        const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+        const mailtoLink = `mailto:${ownerEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        window.location.href = mailtoLink;
+        showNotification('Opening your email client so you can send the message.', 'success');
 
         // Reset form
         this.reset();
@@ -213,6 +218,156 @@ if (!document.getElementById('active-link-styles')) {
     document.head.appendChild(style);
 }
 
+// Theme toggle
+const themeToggle = document.getElementById('themeToggle');
+const currentTheme = localStorage.getItem('theme');
+
+function applyTheme(theme) {
+    if (theme === 'dark') {
+        document.body.classList.add('dark');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        themeToggle.setAttribute('aria-label', 'Switch to light mode');
+    } else {
+        document.body.classList.remove('dark');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+    }
+}
+
+if (currentTheme) {
+    applyTheme(currentTheme);
+} else {
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(prefersDark ? 'dark' : 'light');
+}
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const nextTheme = document.body.classList.contains('dark') ? 'light' : 'dark';
+        applyTheme(nextTheme);
+        localStorage.setItem('theme', nextTheme);
+    });
+}
+
+// AI Assistant Widget
+const OPENAI_API_KEY = ''; // Optional: add your own API key for real assistant responses.
+const assistantButton = document.getElementById('assistantButton');
+const assistantPanel = document.getElementById('assistantPanel');
+const assistantClose = document.getElementById('assistantClose');
+const assistantForm = document.getElementById('assistantForm');
+const assistantInput = document.getElementById('assistantInput');
+const assistantMessages = document.getElementById('assistantMessages');
+
+const assistantWelcome = 'Hello! Welcome to my portfolio. I can guide you through my work, skills, and contact details. Feel free to ask me anything.';
+
+function addAssistantMessage(text, sender = 'assistant') {
+    if (!assistantMessages) return;
+    const messageEl = document.createElement('div');
+    messageEl.className = `assistant-message ${sender}`;
+    messageEl.textContent = text;
+    assistantMessages.appendChild(messageEl);
+    assistantMessages.scrollTop = assistantMessages.scrollHeight;
+}
+
+function openAssistant() {
+    if (!assistantPanel || !assistantButton) return;
+    assistantPanel.classList.remove('hidden');
+    assistantPanel.setAttribute('aria-hidden', 'false');
+    assistantInput?.focus();
+    if (assistantMessages && assistantMessages.childElementCount === 0) {
+        addAssistantMessage(assistantWelcome, 'assistant');
+    }
+}
+
+function closeAssistant() {
+    if (!assistantPanel) return;
+    assistantPanel.classList.add('hidden');
+    assistantPanel.setAttribute('aria-hidden', 'true');
+}
+
+function getLocalAssistantResponse(message) {
+    const text = message.toLowerCase();
+    if (text.includes('project') || text.includes('work')) {
+        return 'I have several featured projects like Customer Churn Prediction, Sales Analytics Dashboard, NLP Text Classification, Time Series Forecasting, and more. Which one would you like to hear about?';
+    }
+    if (text.includes('skill') || text.includes('skills') || text.includes('expertise')) {
+        return 'I specialize in Python, SQL, machine learning, data visualization, and cloud tools. I also work with TensorFlow, PyTorch, Scikit-learn, Tableau, and AWS.';
+    }
+    if (text.includes('contact') || text.includes('email') || text.includes('phone')) {
+        return 'You can reach me at deepakkumar.datascientist@gmail.com or +918340305899. I am also available on LinkedIn via the link in the contact section.';
+    }
+    if (text.includes('experience') || text.includes('career')) {
+        return 'I have experience as a Senior Data Scientist, Data Scientist, and Junior Data Analyst, working on predictive models, ML solutions, and reporting automation.';
+    }
+    if (text.includes('hello') || text.includes('hi') || text.includes('welcome')) {
+        return 'Hi there! I am here to guide you through this portfolio. Ask me about the projects, skills, or how to get in touch.';
+    }
+    return 'I am an assistant for this portfolio page. Ask about projects, skills, experience, or contact information, and I will help you find it.';
+}
+
+async function fetchOpenAIResponse(message) {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${OPENAI_API_KEY}`
+        },
+        body: JSON.stringify({
+            model: 'gpt-3.5-turbo',
+            messages: [
+                { role: 'system', content: 'You are a friendly assistant for a data science portfolio website.' },
+                { role: 'user', content: message }
+            ],
+            max_tokens: 180,
+            temperature: 0.8
+        })
+    });
+    const data = await response.json();
+    if (data.error) {
+        throw new Error(data.error.message || 'OpenAI API error');
+    }
+    return data.choices?.[0]?.message?.content?.trim() || null;
+}
+
+async function getAssistantResponse(message) {
+    if (OPENAI_API_KEY.trim()) {
+        try {
+            const apiReply = await fetchOpenAIResponse(message);
+            if (apiReply) return apiReply;
+        } catch (error) {
+            console.error('Assistant API error:', error);
+            return `${getLocalAssistantResponse(message)} (Note: API response failed, showing fallback answer.)`;
+        }
+    }
+    return getLocalAssistantResponse(message);
+}
+
+if (assistantButton) {
+    assistantButton.addEventListener('click', openAssistant);
+}
+
+if (assistantClose) {
+    assistantClose.addEventListener('click', closeAssistant);
+}
+
+if (assistantForm) {
+    assistantForm.addEventListener('submit', async event => {
+        event.preventDefault();
+        if (!assistantInput) return;
+        const question = assistantInput.value.trim();
+        if (!question) return;
+
+        addAssistantMessage(question, 'user');
+        assistantInput.value = '';
+        assistantInput.disabled = true;
+
+        const answer = await getAssistantResponse(question);
+        addAssistantMessage(answer, 'assistant');
+        assistantInput.disabled = false;
+        assistantInput.focus();
+    });
+}
+
 // Counter Animation for Stats
 function animateCounter(element, target, duration = 2000) {
     let start = 0;
@@ -250,6 +405,7 @@ document.querySelectorAll('.stat-card h3').forEach(statCard => {
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     updateActiveNavLink();
+    openAssistant();
 });
 
 // Add hover effect for project links
