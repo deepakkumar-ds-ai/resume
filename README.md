@@ -1,4 +1,5 @@
 # Data Science Portfolio Website
+site is live at https://deepakkumar-ds-ai.github.io/resume/
 
 A professional, modern resume website built with HTML, CSS, and JavaScript designed specifically for data scientists to showcase their work and projects.
 
@@ -270,7 +271,10 @@ For Font Awesome icons and documentation: https://fontawesome.com/
 ---
 
 Last Updated: 2026
-#   R e s u m e  
- #   r e s u m e  
- #   r e s u m e  
+#   R e s u m e 
+ 
+ #   r e s u m e 
+ 
+ #   r e s u m e 
+ 
  
